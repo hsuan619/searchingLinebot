@@ -9,16 +9,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-LINE_CHANNEL_ACCESS_TOKEN = "DdZCQNPQzUpFt1aPaC6YVoU/lMF/d7EwSKvrEwC7vGVnG1JS2X0xzvhLGjxqeLaRajiMiUsE2tya+xBOVnil/eoS2+y1y5Wan/D1YotCZBVTTJ/wC49sc7T4eL3+LKwqZi0VQwF/CKOAPlNsCpjUOAdB04t89/1O/w1cDnyilFU="
+LINE_CHANNEL_ACCESS_TOKEN = "" #你的TOKEN
 
-LINE_CHANNEL_SECRET = "14de1d1e61558eaf09a6f191f3783d3f"
+LINE_CHANNEL_SECRET = "" #你的SECRET
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-cphv7=2s*9w-u84y^+xo51g%v)$0s9@@f3d%qd_=bkfx^0ptt="
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*"] #改成*允許所有
 
 
 # Application definition
@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "tourbot",
+    "tourbot", #加入你的ngrok app name
 ]
 
 MIDDLEWARE = [
