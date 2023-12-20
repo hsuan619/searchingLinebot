@@ -4,7 +4,7 @@
 # ================================================================
 
 from django.shortcuts import render
-from bot import *
+from tourbot.bot import *
 # Create your views here.
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
@@ -41,9 +41,9 @@ def callback(request):
                 first = event.message.text
                 if first.split(" ")[0] == "店家":  # 輸入格式為："店家.編號"
                     try:
-                        TotalOrder = getShopDetail(first.split(" ")[1])  # 確認為店家
+                        orderDetail = getShopDetail(first.split(" ")[1])  # 確認為店家
                         message.append(
-                            TextSendMessage(text=f"為您查詢累積訂單及月結\n累積訂單為：{TotalOrder}")
+                            TextSendMessage(text=f"為您查詢累積訂單及月結\n累積訂單為：{orderDetail[0]}\n總金額為{orderDetail[1]}")
                         )
                     except Exception:
                         message.append(TextSendMessage(text="此店家號碼不存在，或聯絡我們"))
@@ -56,29 +56,9 @@ def callback(request):
                         else:
                             message.append(TextSendMessage(text="此訂單號碼不存在，或聯絡我們"))
                 else:
-                    message.append(TextSendMessage(text="輸入錯誤，若須查詢訂單編號，請輸入編號如：b01 b02(多筆以空格區分 至多五則)\n若須查詢月結與累積訂單數，請輸入'店家 編號'如：店家 a01\n其他錯誤請聯絡我們"))
+                    message.append(TextSendMessage(text="輸入錯誤，若須查詢訂單編號，\n請輸入編號如：b01 b02\n(多筆以空格區分 至多五則)\n若須查詢月結與累積訂單數，請輸入'店家 編號'如：店家 a01\n其他錯誤請聯絡我們"))
                 line_bot_api.reply_message(event.reply_token, message)
 
         return HttpResponse()
     else:
         return HttpResponseBadRequest()
-
-
-# if (first) != "店家":
-#                     for m in first.split(" "):
-#                         dic = getWholeValues(m)
-#                         if dic != 0:
-#                             msg = f"您所查詢的\n訂單編號為：{dic[0]}\n顧客姓名：{dic[1]}\n活動名稱：{dic[2]}\n活動金額：{dic[3]}"
-#                             message.append(TextSendMessage(text=msg))
-#                         else:
-#                             message.append(TextSendMessage(text="此訂單號碼不存在，或聯絡我們"))
-#                 line_bot_api.reply_message(event.reply_token, message)
-# shopNum = event.message.text
-#                 TotalOrder = getShopDetail(shopNum)
-#                 if TotalOrder:
-#                     message.append(
-#                         TextSendMessage(text=f"為您查詢累積訂單及月結\n累積訂單為：{TotalOrder}")
-#                     )
-#                 else:
-#                     message.append(TextSendMessage(text="此店家號碼不存在，或聯絡我們"))
-#             line_bot_api.reply_message(event.reply_token, message)

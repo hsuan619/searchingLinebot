@@ -47,6 +47,7 @@ def getWholeValues(user):
 
 
 def getShopDetail(shop):
+    
     try:
         cell_list = sheet_test01.find(shop)
         totalAmount = 0
@@ -61,3 +62,4 @@ def getShopDetail(shop):
 
     except Exception:
         return 0
+getShopDetail('a01')

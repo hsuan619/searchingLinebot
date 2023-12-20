@@ -1,0 +1,10 @@
+*要看credentials.json裡的mail
+*並給他sheet的存取權
+
+1.進入虛擬環境 activate
+回到有manage.py的資料夾
+python manage.py runserver
+找到port號
+開cmd執行 ngrok config add-authtoken 283rmU4snnbViau6XcmaogqOMzh_5BR7Zcafz86s8dagF2cza
+ngrok authtoken 283rmU4snnbViau6XcmaogqOMzh_5BR7Zcafz86s8dagF2cza
+ngrok http 'port號'
