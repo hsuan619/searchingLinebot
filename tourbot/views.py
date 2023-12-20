@@ -39,7 +39,7 @@ def callback(request):
             if isinstance(event, MessageEvent):
                 message = []
                 first = event.message.text
-                if first.split(" ")[0] == "店家":  # 輸入格式為："店家.編號"
+                if first.split(" ")[0] == "店家":  # 輸入格式為："店家 編號"
                     try:
                         orderDetail = getShopDetail(first.split(" ")[1])  # 確認為店家
                         message.append(
